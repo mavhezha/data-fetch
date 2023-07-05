@@ -18,11 +18,18 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control">
           <label>Username</label>
-          <input type="text" name="email" {...register("email")} />
+          <input type="text" name="name" {...register('name', { required: "Name is required" } )} />
         </div>
         <div className="form-control">
           <label>Password</label>
-          <input type="password" name="password" {...register("password")} />
+          <input 
+            type="password" 
+            name="password" {...register("password", 
+            { 
+              required: true, 
+              pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/
+           }
+          )} />
         </div>
         <div className="form-control">
           <label></label>
